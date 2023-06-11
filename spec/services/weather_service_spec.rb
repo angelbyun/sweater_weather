@@ -59,6 +59,7 @@ RSpec.describe WeatherService do
 
       expect(hourly_weather[:forecast][:forecastday]).to be_an(Array)
       expect(hourly_weather[:forecast][:forecastday].first).to have_key(:hour)
+      expect(hourly_weather[:forecast][:forecastday].first[:hour].count).to eq(24)
 
       hourly_weather[:forecast][:forecastday].each do |hourly_weather_data|
         expect(hourly_weather_data).to have_key(:hour)
