@@ -53,5 +53,27 @@ RSpec.describe WeatherService do
       expect(daily_weather_data[:day][:condition]).to have_key(:icon)
       expect(daily_weather_data[:day][:condition][:icon]).to be_a(String)
     end
+
+    it "returns the hourly forecast for a specific city" do
+      hourly_weather = WeatherService.new.get_weather("39.74001,-104.99202")
+
+      expect(hourly_weather[:forecast][:forecastday]).to be_an(Array)
+      expect(hourly_weather[:forecast][:forecastday].first).to have_key(:hour)
+
+      hourly_weather[:forecast][:forecastday].each do |hourly_weather_data|
+        expect(hourly_weather_data).to have_key(:hour)
+        expect(hourly_weather_data[:hour]).to be_an(Array)
+        expect(hourly_weather_data[:hour].first).to have_key(:time)
+        expect(hourly_weather_data[:hour].first[:time]).to be_a(String)
+        expect(hourly_weather_data[:hour].first).to have_key(:temp_f)
+        expect(hourly_weather_data[:hour].first[:temp_f]).to be_a(Float)
+        expect(hourly_weather_data[:hour].first).to have_key(:condition)
+        expect(hourly_weather_data[:hour].first[:condition]).to be_a(Hash)
+        expect(hourly_weather_data[:hour].first[:condition]).to have_key(:text)
+        expect(hourly_weather_data[:hour].first[:condition][:text]).to be_a(String)
+        expect(hourly_weather_data[:hour].first[:condition]).to have_key(:icon)
+        expect(hourly_weather_data[:hour].first[:condition][:icon]).to be_a(String)
+      end
+    end
   end
 end
