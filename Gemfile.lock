@@ -103,6 +103,8 @@ GEM
     io-console (0.6.0)
     irb (1.7.0)
       reline (>= 0.3.0)
+    jsonapi-serializer (2.2.0)
+      activesupport (>= 4.2)
     launchy (2.5.2)
       addressable (~> 2.8)
     loofah (2.21.3)
@@ -229,6 +231,7 @@ DEPENDENCIES
   debug
   faraday
   figaro
+  jsonapi-serializer
   launchy
   net-http
   orderly
