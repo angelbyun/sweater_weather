@@ -1,0 +1,18 @@
+require 'rails_helper'
+
+RSpec.describe ForecastFacade do
+  describe "#get_forecast" do
+    it "returns a forecast object" do
+      forecast = ForecastFacade.new.get_forecast("Denver,CO")
+
+      expect(forecast).to be_a(Forecast)
+      expect(forecast.current_weather).to be_a(Hash)
+      expect(forecast.daily_weather).to be_an(Array)
+      expect(forecast.daily_weather.count).to eq(5)
+      expect(forecast.daily_weather.first).to be_a(Hash)
+      expect(forecast.hourly_weather).to be_an(Array)
+      expect(forecast.hourly_weather.count).to eq(24)
+      expect(forecast.hourly_weather.first).to be_a(Hash)
+    end
+  end
+end
