@@ -1,6 +1,6 @@
 class LocationService
-  def get_lat_lon(search)
-    get_url("geocoding/v1/address?location=#{search}")
+  def get_lat_lon(lat_lon)
+    get_url("geocoding/v1/address?location=#{lat_lon}")
   end
 
   private
