@@ -7,6 +7,7 @@ RSpec.describe BookService do
 
       expect(book_service).to be_a(Hash)
       expect(book_service[:docs]).to be_an(Array)
+      expect(book_service[:docs].count).to eq(100)
 
       book_data = book_service[:docs].first
 
