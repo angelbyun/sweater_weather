@@ -1,11 +1,11 @@
 class Book
   attr_reader :title,
-              :isbn,
-              :publisher
-
+              :publisher,
+              :isbn
+              
   def initialize(book_data)
-    @title = book_data[:docs][0][:title]
-    @isbn = book_data[:docs][0][:isbn]
-    @publisher = book_data[:docs][0][publisher]
+    @title = book_data[:title]
+    @publisher = book_data[:publisher]
+    @isbn = book_data[:isbn]
   end
 end
