@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe BookService do
   describe "#get_book" do
-    it "returns a list of 5 books based upon a specific search" do
-      book_service = BookService.new.get_book("denver,co")
+    it "returns a list of books based upon a specific search" do
+      book_service = BookService.new.get_book("denver,co", "5")
 
       expect(book_service).to be_a(Hash)
       expect(book_service[:docs]).to be_an(Array)
-      expect(book_service[:docs].count).to eq(100)
+      expect(book_service[:docs].count).to eq(5)
 
       book_data = book_service[:docs].first
 
