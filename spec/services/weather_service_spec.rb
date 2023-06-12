@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe WeatherService do
   describe "#get_weather" do
     it "returns a list of attributes for the current weather for a specific city" do
-      current_weather = WeatherService.new.get_weather("39.74001,-104.99202")
+      current_weather = WeatherService.new.get_weather("39.74001","-104.99202")
 
       expect(current_weather).to be_a(Hash)
       expect(current_weather[:current]).to be_a(Hash)
@@ -29,7 +29,7 @@ RSpec.describe WeatherService do
     end
 
     it "returns the forecast for 5 days for a specific city" do
-      daily_weather = WeatherService.new.get_weather("39.74001,-104.99202")
+      daily_weather = WeatherService.new.get_weather("39.74001","-104.99202")
 
       expect(daily_weather[:forecast]).to be_a(Hash)
       expect(daily_weather[:forecast][:forecastday].count).to eq(5)
@@ -55,7 +55,7 @@ RSpec.describe WeatherService do
     end
 
     it "returns the hourly forecast for a specific city" do
-      hourly_weather = WeatherService.new.get_weather("39.74001,-104.99202")
+      hourly_weather = WeatherService.new.get_weather("39.74001","-104.99202")
 
       expect(hourly_weather[:forecast][:forecastday]).to be_an(Array)
       expect(hourly_weather[:forecast][:forecastday].first).to have_key(:hour)
