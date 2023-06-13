@@ -4,7 +4,7 @@ class ForecastFacade
     lat = location[:results].first[:locations].first[:latLng][:lat]
     lon = location[:results].first[:locations].first[:latLng][:lon]
 
-    weather = weather_service.get_weather(lat,lon)
+    weather = weather_service.get_weather(lat, lon)
     current_weather = get_current_weather(weather)
     daily_weather = get_daily_weather(weather)
     hourly_weather = get_hourly_weather(weather)
@@ -19,6 +19,7 @@ class ForecastFacade
       temp: weather[:current][:temp_f],
       feels_like: weather[:current][:feelslike_f],
       humidity: weather[:current][:humidity],
+      uv: weather[:current][:uv],
       visibility: weather[:current][:vis_miles],
       text: weather[:current][:condition][:text],
       icon: weather[:current][:condition][:icon]
@@ -32,7 +33,9 @@ class ForecastFacade
         sunrise: daily[:astro][:sunrise],
         sunset: daily[:astro][:sunset],
         max_temp: daily[:day][:maxtemp_f],
-        min_temp: daily[:day][:mintemp_f]
+        min_temp: daily[:day][:mintemp_f],
+        text: daily[:day][:condition][:text],
+        icon: daily[:day][:condition][:icon]
       }
     end
   end
