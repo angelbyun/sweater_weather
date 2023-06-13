@@ -1,6 +1,10 @@
 class LocationService
   def get_lat_lon(lat_lon)
-    get_url("geocoding/v1/address?location=#{lat_lon}")
+    get_url("/geocoding/v1/address?location=#{lat_lon}")
+  end
+
+  def get_distance(origin, destination)
+    get_url("/directions/v2/route?from=#{origin}&to=#{destination}")
   end
 
   private
@@ -10,7 +14,7 @@ class LocationService
   end
 
   def conn
-    Faraday.new(url: 'https://www.mapquestapi.com/') do |faraday|
+    Faraday.new(url: 'https://www.mapquestapi.com') do |faraday|
       faraday.params['key'] = ENV['GEOCODE_API']
     end
   end
