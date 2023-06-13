@@ -5,7 +5,7 @@ RSpec.describe ActivitiesFacade do
     before :each do
       @location = "Chicago,IL"
       @type = "relaxation", "recreational"
-      @activity_facade = ActivitiesFacade.new(@location, @type)
+      @activity_facade = ActivitiesFacade.new(@location)
     end
 
     describe "#get_activity" do
