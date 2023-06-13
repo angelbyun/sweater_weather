@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :forecast, only: [:index]
       resources :users, only: [:create]
+      get '/activities', to: "activities#search"
     end
   end
 end

@@ -1,7 +1,7 @@
 class ActivitiesFacade
-  def initialize(location, type)
+  def initialize(location)
     @destination = location
-    @type = type
+    @type = ["relaxation", "recreational"]
   end
 
   def get_activity
@@ -25,6 +25,10 @@ class ActivitiesFacade
   def current_weather
     forecast_info.current_weather
   end
+
+  # def location_info
+  #   @_location ||= LocationService.new.get_lat_lon(@destination)
+  # end
 
   def forecast_info
     @_forecast ||= ForecastFacade.new.get_forecast(@destination)
