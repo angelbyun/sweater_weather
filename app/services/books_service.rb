@@ -10,6 +10,6 @@ class BooksService
   end
 
   def conn
-    Faraday.new(url: 'https://openlibrary.org')
+    Faraday.new(url: 'https://www.openlibrary.org')
   end
 end
