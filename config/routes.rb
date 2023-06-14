@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       resources :sessions, only: [:create]
       get '/activities', to: "activities#search"
+      post '/road_trip', to: "road_trip#create"
     end
   end
 end

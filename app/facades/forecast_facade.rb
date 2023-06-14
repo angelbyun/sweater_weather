@@ -1,10 +1,10 @@
 class ForecastFacade
-  def get_forecast(lat_lon)
-    location = location_service.get_lat_lon(lat_lon)
-    lat = location[:results].first[:locations].first[:latLng][:lat]
-    lon = location[:results].first[:locations].first[:latLng][:lon]
+  def get_forecast(location)
+    destination = location_service.get_lat_lon(location)
+    lat = destination[:results].first[:locations].first[:latLng][:lat]
+    lon = destination[:results].first[:locations].first[:latLng][:lon]
 
-    weather = weather_service.get_weather(lat, lon)
+    weather = weather_service.get_weather(location)
     current_weather = get_current_weather(weather)
     daily_weather = get_daily_weather(weather)
     hourly_weather = get_hourly_weather(weather)

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe WeatherService do
+RSpec.describe WeatherService, :vcr do
   describe "#get_weather" do
     it "returns a list of attributes for the current weather for a specific city" do
-      current_weather = WeatherService.new.get_weather("39.74001","-104.99202")
+      current_weather = WeatherService.new.get_weather("39.74001,-104.99202")
 
       expect(current_weather).to be_a(Hash)
       expect(current_weather[:current]).to be_a(Hash)
@@ -29,7 +29,7 @@ RSpec.describe WeatherService do
     end
 
     it "returns the forecast for 5 days for a specific city" do
-      daily_weather = WeatherService.new.get_weather("39.74001","-104.99202")
+      daily_weather = WeatherService.new.get_weather("39.74001,-104.99202")
 
       expect(daily_weather[:forecast]).to be_a(Hash)
       expect(daily_weather[:forecast][:forecastday].count).to eq(5)
@@ -55,7 +55,7 @@ RSpec.describe WeatherService do
     end
 
     it "returns the hourly forecast for a specific city" do
-      hourly_weather = WeatherService.new.get_weather("39.74001","-104.99202")
+      hourly_weather = WeatherService.new.get_weather("39.74001,-104.99202")
 
       expect(hourly_weather[:forecast][:forecastday]).to be_an(Array)
       expect(hourly_weather[:forecast][:forecastday].first).to have_key(:hour)
@@ -75,6 +75,39 @@ RSpec.describe WeatherService do
         expect(hourly_weather_data[:hour].first[:condition]).to have_key(:icon)
         expect(hourly_weather_data[:hour].first[:condition][:icon]).to be_a(String)
       end
+    end
+  end
+
+  describe "#get_future_weather" do
+    it "returns the future weather of location" do
+      location = "Boulder,CO"
+      date = "2023-06-27"
+      hour = "22"
+
+      future_weather = WeatherService.new.get_future_weather(location, date, hour)
+
+      expect(future_weather).to be_a(Hash)
+      expect(future_weather).to have_key(:location)
+      expect(future_weather[:location]).to be_a(Hash)
+      expect(future_weather[:location]).to have_key(:name)
+      expect(future_weather[:location][:name]).to be_a(String)
+      expect(future_weather).to have_key(:forecast)
+      expect(future_weather[:forecast]).to be_a(Hash)
+      expect(future_weather[:forecast]).to have_key(:forecastday)
+      expect(future_weather[:forecast][:forecastday]).to be_an(Array)
+
+      future_weather_forecast = future_weather[:forecast][:forecastday].first[:hour].first
+
+      expect(future_weather[:forecast][:forecastday].first).to have_key(:hour)
+      expect(future_weather_forecast).to be_an(Hash)
+      expect(future_weather_forecast).to have_key(:time)
+      expect(future_weather_forecast[:time]).to be_a(String)
+      expect(future_weather_forecast).to have_key(:temp_f)
+      expect(future_weather_forecast[:temp_f]).to be_a(Float)
+      expect(future_weather_forecast).to have_key(:condition)
+      expect(future_weather_forecast[:condition]).to be_a(Hash)
+      expect(future_weather_forecast[:condition]).to have_key(:text)
+      expect(future_weather_forecast[:condition][:text]).to be_a(String)
     end
   end
 end

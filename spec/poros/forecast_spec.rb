@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Forecast do
+RSpec.describe Forecast, :vcr do
   it 'exists and has attributes' do
     forecast = ForecastFacade.new.get_forecast("Denver,CO")
 

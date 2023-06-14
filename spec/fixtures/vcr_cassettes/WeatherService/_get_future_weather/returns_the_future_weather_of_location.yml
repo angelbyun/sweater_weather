@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.weatherapi.com/v1/forecast.json?dt=2023-06-27&hour=22&key=WEATHER_API&q=Boulder,CO
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.6
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Jun 2023 04:37:46 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Vary:
+      - Accept-Encoding
+      Server:
+      - BunnyCDN-IL1-940
+      Cdn-Pullzone:
+      - '93447'
+      Cdn-Uid:
+      - 8fa3a04a-75d9-4707-8056-b7b33c8ac7fe
+      Cdn-Requestcountrycode:
+      - US
+      Cache-Control:
+      - public, max-age=180
+      Cdn-Proxyver:
+      - '1.03'
+      Cdn-Requestpullsuccess:
+      - 'True'
+      Cdn-Requestpullcode:
+      - '200'
+      Cdn-Cachedat:
+      - 06/14/2023 04:37:46
+      Cdn-Edgestorageid:
+      - '1070'
+      Cdn-Status:
+      - '200'
+      Cdn-Requestid:
+      - 2c49c0ad56797597639e66d35358f540
+      Cdn-Cache:
+      - MISS
+    body:
+      encoding: ASCII-8BIT
+      string: '{"location":{"name":"Boulder","region":"Colorado","country":"United
+        States of America","lat":40.02,"lon":-105.27,"tz_id":"America/Denver","localtime_epoch":1686717466,"localtime":"2023-06-13
+        22:37"},"current":{"last_updated":"2023-06-13 22:30","temp_f":57.2,"condition":{"text":"Moderate
+        or heavy rain with thunder","icon":"//cdn.weatherapi.com/weather/64x64/night/389.png"},"humidity":77,"feelslike_f":56.0,"vis_miles":9.0,"uv":1.0},"forecast":{"forecastday":[{"date":"2023-06-27","day":{"maxtemp_f":87.4,"mintemp_f":59.9,"totalsnow_cm":0.0,"condition":{"text":"Sunny","icon":"//cdn.weatherapi.com/weather/64x64/day/113.png"}},"astro":{"sunrise":"05:34
+        AM","sunset":"08:34 PM"},"hour":[{"time":"2023-06-27 22:00","temp_f":64.8,"condition":{"text":"Clear","icon":"//cdn.weatherapi.com/weather/64x64/night/113.png"}}]}]}}'
+  recorded_at: Wed, 14 Jun 2023 04:37:46 GMT
+recorded_with: VCR 6.1.0

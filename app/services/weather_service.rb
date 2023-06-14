@@ -1,6 +1,11 @@
 class WeatherService
-  def get_weather(lat, lon)
-    get_url("/v1/forecast.json?&days=5&q=#{lat},#{lon}")
+  def get_weather(location)
+    get_url("/v1/forecast.json?&days=5&q=#{location}")
+  end
+
+  def get_future_weather(location, date, hour)
+    # require 'pry'; binding.pry
+    get_url("/v1/forecast.json?q=#{location}&dt=#{date}&hour=#{hour}")
   end
 
   private

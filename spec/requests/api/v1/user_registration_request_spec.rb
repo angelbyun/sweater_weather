@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "User Registration", type: :request do
+RSpec.describe "User Registration", :vcr do
   describe "user registration" do
     it "allows new users to register" do
       users = { 

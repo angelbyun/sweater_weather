@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Activities API" do
+RSpec.describe "Activities API", :vcr do
   describe "displays activities depending on temperature in city/state" do
     it "displays two activities in Chicago, IL" do
       destination = "Chicago,IL"

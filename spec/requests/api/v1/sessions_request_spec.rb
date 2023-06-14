@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "User Login", type: :request do
+RSpec.describe "User Login", :vcr do
   describe "user login" do
     it "allows existing users to login" do
       user = User.create!(email: "angelbyun123@gmail.com", password: "test", password_confirmation: "test")

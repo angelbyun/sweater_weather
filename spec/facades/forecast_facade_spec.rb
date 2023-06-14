@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ForecastFacade do
+RSpec.describe ForecastFacade, :vcr do
   describe "#get_forecast" do
     it "returns a forecast object" do
       forecast = ForecastFacade.new.get_forecast("Denver,CO")

@@ -3,10 +3,6 @@ class LocationService
     get_url("/geocoding/v1/address?location=#{lat_lon}")
   end
 
-  def get_distance(origin, destination)
-    get_url("/directions/v2/route?from=#{origin}&to=#{destination}")
-  end
-
   private
   def get_url(url)
     response = conn.get(url)

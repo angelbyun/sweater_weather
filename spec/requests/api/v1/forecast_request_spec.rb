@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Forecast API" do
+RSpec.describe "Forecast API", :vcr do
   describe "retrieves the forecast for a city/state" do
     it "retrieves the forecast for a specific city/state" do
       location = "Denver,CO"
@@ -9,10 +9,11 @@ RSpec.describe "Forecast API" do
 
       headers = { 'CONTENT_TYPE' => 'application/json' }
 
-      forecasts = JSON.parse(response.body, symbolize_names: true)[:data]
-
       expect(response).to be_successful
       expect(response.status).to eq(200)
+
+      forecasts = JSON.parse(response.body, symbolize_names: true)[:data]
+
 
       expect(forecasts).to be_a(Hash)
       expect(forecasts).to have_key(:id)
