@@ -288,27 +288,38 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           null
         ]
       },
-      "/Users/angelbyun/mod3/projects/sweater_weather/app/poros/activities.rb": {
+      "/Users/angelbyun/mod3/projects/sweater_weather/app/services/location_service.rb": {
         "lines": [
           1,
           1,
-          null,
+          1,
           null,
           null,
           1,
-          0,
-          0,
-          0,
+          1,
+          null,
+          null,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1686679205
+    "timestamp": 1686696071
   }
 }

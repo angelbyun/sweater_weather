@@ -2,10 +2,6 @@ require 'rails_helper'
 
 RSpec.describe "User Registration", type: :request do
   describe "user registration" do
-    before :each do
-
-    end
-
     it "allows new users to register" do
       users = { 
                 email: "angelbyun123@gmail.com",
